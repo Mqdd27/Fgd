@@ -1,0 +1,5 @@
+1. Buat project laravel
+2. setting .env
+3. setting database *
+4. migrate database
+5. create seeder
