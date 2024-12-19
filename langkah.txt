@@ -3,3 +3,5 @@
 3. setting database *
 4. migrate database
 5. create seeder
+6. create user route
+7. create user access middleware
