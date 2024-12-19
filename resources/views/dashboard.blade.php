@@ -10,23 +10,48 @@
 </head>
 
 <body class="bg-secondary">
-    <div class="bg-white container-sm col-6 border my-3 rounded px-5 py-3 pb-5">
-        <h1>Halo!!</h1>
+    <div class="bg-white card container-xl col-6 border my-3 rounded px-5 py-3 pb-5">
+        {{-- <h1>Halo!!</h1> --}}
+        @if (Auth::user()->role == 'sm')
+            <h1>Hello, {{ $data = Auth::user()->name }}</h1>
+            {{-- <li class="list-group-item">Menu Admin</li> --}}
+        @endif
+        @if (Auth::user()->role == 'user')
+            {{-- <li class="list-group-item">Menu User</li> --}}
+            <h1>Hello, {{ $data = Auth::user()->name }}</h1>
+        @endif
+        @if (Auth::user()->role == 'supplier')
+            {{-- <li class="list-group-item">Menu Supplier</li> --}}
+            <h1>Hello, {{ $data = Auth::user()->name }}</h1>
+        @endif
         <div>Selamat datang di halaman dashboard</div>
-        <div><a href="/logout" class="btn btn-sm btn-secondary">Logout >></a></div>
-        <div class="card mt-3">
-            <ul class="list-group list-group-flush">
-                @if (Auth::user()->role == 'sm')
-                    <li class="list-group-item">Menu Admin</li>
-                @endif
-                @if (Auth::user()->role == 'user')
-                    <li class="list-group-item">Menu User</li>
-                @endif
-                @if (Auth::user()->role == 'supplier')
-                    <li class="list-group-item">Menu Supplier</li>
-                @endif
-            </ul>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <th>No</th>
+                    <th>Barang</th>
+                    <th>Jumlah</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-sm btn-primary">Embo</a>
+                            <a href="#" class="btn btn-sm btn-danger mx-1">Hapus</a>
+                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        <div class="card-footer">
+            <div><a href="/logout" class="btn btn-sm btn-secondary">Logout >></a></div>
+
+        </div>
+
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
