@@ -15,7 +15,8 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);
+    Route::get('/dashboard', [AdminController::class, 'index']);
+    Route::get('/dashboard/admin', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);
     Route::get('/dashboard/user', [AdminController::class, 'user'])->middleware([UserAkses::class . ':user']);
     Route::get('/dashboard/supplier', [AdminController::class, 'supplier'])->middleware([UserAkses::class . ':supplier']);
     Route::get('/logout', [SesiController::class, 'logout'])->name('logout');

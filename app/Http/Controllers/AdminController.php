@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    function index()
+    {
+        return view('dashboard');
+    }
     function admin()
     {
         echo "<h1> Hello, " . Auth::user()->name . "</h1>";

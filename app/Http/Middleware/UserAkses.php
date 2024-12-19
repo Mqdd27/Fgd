@@ -23,5 +23,6 @@ class UserAkses
 
         // Jika tidak, kembalikan respon "Unauthorized"
         return response()->json(['message' => 'Unauthorized'], 403);
+        // return redirect('dashboard');
     }
 }
