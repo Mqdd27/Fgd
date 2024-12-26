@@ -37,7 +37,7 @@ class SesiController extends Controller
             } elseif (Auth::user()->role == 'supplier') {
                 return redirect('dashboard/supplier');
             } elseif (Auth::user()->role == 'sm') {
-                return redirect('dashboard');
+                return redirect('dashboard/admin');
             }
         } else {
             return redirect('')->withErrors('Email atau Password salah')->withInput();
