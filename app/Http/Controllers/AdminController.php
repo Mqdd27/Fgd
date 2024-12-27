@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -46,4 +47,10 @@ class AdminController extends Controller
         // echo "<a href='/logout'>Logout</a>"; // Arahkan ke /logout
         return view('supplierDashboard');
     }
+
+    // function edit($id)
+    // {
+    //     $user = User::findOrFail($id); // Ambil data berdasarkan ID, atau lempar error 404 jika tidak ditemukan
+    //     return view('editForm', compact('user')); // Kirim data ke view
+    // }
 }

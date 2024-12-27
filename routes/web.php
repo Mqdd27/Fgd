@@ -20,5 +20,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/user', [AdminController::class, 'user'])->middleware([UserAkses::class . ':user']);
     Route::get('/dashboard/supplier', [AdminController::class, 'supplier'])->middleware([UserAkses::class . ':supplier']);
     // Route::get('/dashboard/test', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);
+    // Route::get('/edit/{id}', [AdminController::class, 'edit'])->middleware([UserAkses::class . ':sm']);
     Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
+});
+
+Route::get('/test', function () {
+    return view('test');
 });
