@@ -1,0 +1,130 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Barang;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
+class BarangController extends Controller
+{
+    public function index(): View
+    {
+        $barangs = Barang::latest()->paginate(10);
+
+        return view('adminDashboard', compact('barangs'));
+    }
+
+        /**
+     * create
+     *
+     * @return View
+     */
+    public function create(): View
+    {
+        return view('barangs.create');
+    }
+
+        /**
+     * store
+     *
+     * @param  mixed $request
+     * @return RedirectResponse
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        //validate form
+        $request->validate([
+            'barang'         => 'required|min:5',
+            'jumlah'         => 'required|numeric'
+        ]);
+
+        //create product
+        Product::create([
+            'barang'         => $request->barang,
+            'jumlah'         => $request->jumlah
+        ]);
+
+        //redirect to index
+        return redirect()->route('/dashboard/admin')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
+    /**
+     * show
+     *
+     * @param  mixed $id
+     * @return View
+     */
+    public function show(string $id): View
+    {
+        //get product by ID
+        $product = Product::findOrFail($id);
+
+        //render view with product
+        return view('products.show', compact('product'));
+    }
+
+    /**
+     * edit
+     *
+     * @param  mixed $id
+     * @return View
+     */
+    public function edit(string $id): View
+    {
+        //get product by ID
+        $product = Product::findOrFail($id);
+
+        //render view with product
+        return view('products.edit', compact('product'));
+    }
+
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function update(Request $request, $id): RedirectResponse
+    {
+        //validate form
+        $request->validate([
+            'barang'         => 'required|min:5',
+            'jumlah'         => 'required|numeric'
+        ]);
+
+        //get product by ID
+        $product = Product::findOrFail($id);
+
+            //update product without image
+            $product->update([
+                'title'         => $request->title,
+                'description'   => $request->description,
+                'price'         => $request->price,
+                'stock'         => $request->stock
+            ]);
+
+        //redirect to index
+        return redirect()->route('products.index')->with(['success' => 'Data Berhasil Diubah!']);
+    }
+
+        /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function destroy($id): RedirectResponse
+    {
+        // Get barang by ID
+        $barang = Barang::findOrFail($id);
+
+        // Delete barang
+        $barang->delete();
+
+        // Redirect to the dashboard route
+        return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+}
