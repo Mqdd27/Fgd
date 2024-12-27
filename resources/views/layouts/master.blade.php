@@ -4,34 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dashboard')</title>
+    <title>{{ Auth::user()->name }} Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/dashboard-style.css') }}">
     <style>
-        body {
-            min-height: 100vh;
-        }
 
-        .sidebar {
-            width: 250px;
-            background-color: #343a40;
-            color: white;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-        }
-
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .sidebar a:hover {
-            background-color: #495057;
-        }
-
-        .main-content {
-            margin-left: 250px;
-        }
     </style>
 </head>
 

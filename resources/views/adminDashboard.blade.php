@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 
-@section('title', 'Admin Dashboard')
+{{-- @section('title', 'Admin Dashboard') --}}
 
 @section('content')
     <div class="container mt-4">
