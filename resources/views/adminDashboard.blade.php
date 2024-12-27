@@ -8,7 +8,15 @@
         <h1>Welcome {{ Auth::user()->name }}!!</h1>
         <div class="card-body">
             <a href="{{ route('barangs.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
-            <table class="table table-bordered">
+            <br>
+        <tr>
+            <th colspan="3">
+                List Of Users
+                <a class="btn btn-warning float-end" href="{{ route('barangs.export') }}"><i class="fa fa-download"></i> Export User Data</a>
+            </th>
+        </tr>
+        <br>
+        <table class="table table-bordered">
                 <thead class="table-light">
                     <th>No</th>
                     <th>Barang</th>

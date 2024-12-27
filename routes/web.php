@@ -18,6 +18,7 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('barangs', BarangController::class);
+    Route::get('barangs-export', [BarangController::class, 'export'])->name('barangs.export');
     Route::get('/dashboard/admin', [BarangController::class, 'index'])->name('dashboard');
     Route::get('/show', [BarangController::class, 'index'])->name('show');
     // Route::delete('/dashboard/admin/{barang}', [BarangController::class, 'destroy'])->name('dashboard');

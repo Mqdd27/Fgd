@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BarangsExport;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -124,5 +126,10 @@ class BarangController extends Controller
 
         // Redirect to the dashboard route
         return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function export()
+    {
+        return Excel::download(new BarangsExport, 'barangs.xlsx');
     }
 }
