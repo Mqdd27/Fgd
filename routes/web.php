@@ -15,10 +15,11 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/', [SesiController::class, 'login']);
 });
 
-Route::resource('barangs', BarangController::class);
 
 Route::middleware(['auth'])->group(function () {
+    Route::resource('barangs', BarangController::class);
     Route::get('/dashboard/admin', [BarangController::class, 'index'])->name('dashboard');
+    Route::get('/show', [BarangController::class, 'index'])->name('show');
     // Route::delete('/dashboard/admin/{barang}', [BarangController::class, 'destroy'])->name('dashboard');
     Route::get('/dashboard', [AdminController::class, 'index']);
     Route::get('/dashboard/admin/sm', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);

@@ -7,6 +7,7 @@
     <div class="container mt-4">
         <h1>Welcome {{ Auth::user()->name }}!!</h1>
         <div class="card-body">
+            <a href="{{ route('barangs.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
             <table class="table table-bordered">
                 <thead class="table-light">
                     <th>No</th>

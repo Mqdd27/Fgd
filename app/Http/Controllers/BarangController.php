@@ -23,7 +23,7 @@ class BarangController extends Controller
      */
     public function create(): View
     {
-        return view('barangs.create');
+        return view('create');
     }
 
         /**
@@ -36,18 +36,18 @@ class BarangController extends Controller
     {
         //validate form
         $request->validate([
-            'barang'         => 'required|min:5',
+            'barang'         => 'required',
             'jumlah'         => 'required|numeric'
         ]);
 
         //create product
-        Product::create([
+        Barang::create([
             'barang'         => $request->barang,
             'jumlah'         => $request->jumlah
         ]);
 
         //redirect to index
-        return redirect()->route('/dashboard/admin')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -59,10 +59,10 @@ class BarangController extends Controller
     public function show(string $id): View
     {
         //get product by ID
-        $product = Product::findOrFail($id);
+        $barangs = Barang::findOrFail($id);
 
         //render view with product
-        return view('products.show', compact('product'));
+        return view('show', compact('barangs'));
     }
 
     /**
@@ -74,10 +74,10 @@ class BarangController extends Controller
     public function edit(string $id): View
     {
         //get product by ID
-        $product = Product::findOrFail($id);
+        $barangs = Barang::findOrFail($id);
 
         //render view with product
-        return view('products.edit', compact('product'));
+        return view('edit', compact('barangs'));
     }
 
     /**
@@ -96,18 +96,16 @@ class BarangController extends Controller
         ]);
 
         //get product by ID
-        $product = Product::findOrFail($id);
+        $barangs = Barang::findOrFail($id);
 
             //update product without image
-            $product->update([
-                'title'         => $request->title,
-                'description'   => $request->description,
-                'price'         => $request->price,
-                'stock'         => $request->stock
+            $barangs->update([
+                'barang'         => $request->barang,
+                'jumlah'         => $request->jumlah
             ]);
 
         //redirect to index
-        return redirect()->route('products.index')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect()->route('barangs.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
         /**
@@ -119,10 +117,10 @@ class BarangController extends Controller
     public function destroy($id): RedirectResponse
     {
         // Get barang by ID
-        $barang = Barang::findOrFail($id);
+        $barangs = Barang::findOrFail($id);
 
         // Delete barang
-        $barang->delete();
+        $barangs->delete();
 
         // Redirect to the dashboard route
         return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Dihapus!']);
