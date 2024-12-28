@@ -2,6 +2,7 @@
 
 
 {{-- @section('title', 'User Dashboard') --}}
+@section('title', 'User Dashboard')
 
 @section('content')
     <div class="container mt-4">

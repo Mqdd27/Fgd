@@ -2,6 +2,7 @@
 
 
 {{-- @section('title', 'Supplier Dashboard') --}}
+@section('title', 'Supplier Dashboard')
 
 @section('content')
     <div class="container mt-4">

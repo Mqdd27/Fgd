@@ -2,21 +2,24 @@
 
 
 {{-- @section('title', 'Admin Dashboard') --}}
+@section('title', 'Admin Dashboard')
 
 @section('content')
     <div class="container mt-4">
         <h1>Welcome {{ Auth::user()->name }}!!</h1>
         <div class="card-body">
-            <a href="{{ route('barangs.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
+            <a href="{{ route('barangs.create') }}" class="btn btn-md btn-success mb-3">Add</a>
             <br>
-        <tr>
-            <th colspan="3">
-                List Of Users
-                <a class="btn btn-warning float-end" href="{{ route('barangs.export') }}"><i class="fa fa-download"></i> Export User Data</a>
-            </th>
-        </tr>
-        <br>
-        <table class="table table-bordered">
+            <tr>
+                <th colspan="3">
+                    List Of Users
+                    <a class="btn btn-warning float-end mb-2" href="{{ route('barangs.export') }}"><i
+                            class="fa fa-download"></i>
+                        Export User Data</a>
+                </th>
+            </tr>
+            <br>
+            <table class="table table-bordered">
                 <thead class="table-light">
                     <th>No</th>
                     <th>Barang</th>
@@ -25,33 +28,35 @@
                 </thead>
                 <tbody>
                     @forelse ($barangs as $barang)
-                    <tr>
-                        <td>1</td>
-                        <td>{{ $barang->barang }}</td>
-                        <td>{{ $barang->jumlah }}</td>
-                        <td class="d-flex justify-content-center">
-                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('barangs.destroy', $barang->id) }}" method="POST">
-                                <!-- Ganti dengan route yang benar untuk SHOW dan EDIT -->
-                                <a href="{{ route('barangs.show', $barang->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                <a href="{{ route('barangs.edit', $barang->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                            </form>
+                        <tr>
+                            <td>1</td>
+                            <td>{{ $barang->barang }}</td>
+                            <td>{{ $barang->jumlah }}</td>
+                            <td class="d-flex justify-content-center">
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                    action="{{ route('barangs.destroy', $barang->id) }}" method="POST">
+                                    <!-- Ganti dengan route yang benar untuk SHOW dan EDIT -->
+                                    <a href="{{ route('barangs.show', $barang->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                    <a href="{{ route('barangs.edit', $barang->id) }}"
+                                        class="btn btn-sm btn-primary">EDIT</a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                </form>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     @empty
-                    <tr>
-                        <td colspan="4">
-                            <div class="alert alert-danger text-center">
-                                Data Barang belum Tersedia.
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-danger text-center">
+                                    Data Barang belum Tersedia.
+                                </div>
+                            </td>
+                        </tr>
                     @endforelse
                 </tbody>
-                            </table>
+            </table>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -59,7 +64,7 @@
 
         <script>
             //message with sweetalert
-            @if(session('success'))
+            @if (session('success'))
                 Swal.fire({
                     icon: "success",
                     title: "BERHASIL",
@@ -67,7 +72,7 @@
                     showConfirmButton: false,
                     timer: 2000
                 });
-            @elseif(session('error'))
+            @elseif (session('error'))
                 Swal.fire({
                     icon: "error",
                     title: "GAGAL!",
@@ -76,7 +81,6 @@
                     timer: 2000
                 });
             @endif
-
         </script>
 
         <div class="card-footer">
