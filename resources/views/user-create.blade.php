@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 
-{{-- @section('title', 'Admin Dashboard') --}}
 @section('title', 'Create User')
 
 @section('content')
