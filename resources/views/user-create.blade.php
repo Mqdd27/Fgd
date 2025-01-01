@@ -2,7 +2,7 @@
 
 
 {{-- @section('title', 'Admin Dashboard') --}}
-@section('title', 'Admin Dashboard')
+@section('title', 'Create User')
 
 @section('content')
 
