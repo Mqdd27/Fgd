@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SesiController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BarangController;
 use App\Http\Middleware\UserAkses;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +28,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/admin/sm', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);
     Route::get('/dashboard/user', [AdminController::class, 'user'])->middleware([UserAkses::class . ':user']);
     Route::get('/dashboard/supplier', [AdminController::class, 'supplier'])->middleware([UserAkses::class . ':supplier']);
-    // Route::get('/dashboard/test', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);
-    // Route::get('/edit/{id}', [AdminController::class, 'edit'])->middleware([UserAkses::class . ':sm']);
+    Route::middleware([AdminMiddleware::class . ':sm'])->group(function () {
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create'); // Menyelaraskan dengan rute dan controller
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    });
     Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
-Route::get('/test', function () {
-    return view('edit');
-});
+// Route::get('/test', function () {
+//     return view('edit');
+// });
