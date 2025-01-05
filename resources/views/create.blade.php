@@ -16,12 +16,13 @@
                                 @csrf
 
                                 <div class="form-group mb-3">
-                                    <label class="font-weight-bold mb-3">Nama Barang</label>
-                                    <input type="text" class="form-control @error('barang') is-invalid @enderror"
-                                        name="barang" value="{{ old('barang') }}" placeholder="Masukkan Nama Barang">
+                                    <label class="font-weight-bold mb-3">DSTRC_ORI</label>
+                                    <input type="text" class="form-control @error('dstrc_ori') is-invalid @enderror"
+                                        name="dstrc_ori" value="{{ old('dstrc_ori') }}" placeholder="Masukkan DSTRC_ORI"
+                                        required>
 
                                     <!-- error message untuk title -->
-                                    @error('barang')
+                                    @error('dstrc_ori')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
                                         </div>
