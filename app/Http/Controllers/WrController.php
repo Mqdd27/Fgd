@@ -7,6 +7,8 @@ use App\Models\wr;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use App\Exports\WrExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WrController extends Controller
 {
@@ -94,7 +96,8 @@ class WrController extends Controller
             'plant_process'         => $request->plant_process,
             'plant_activity'         => $request->plant_activity,
             'wr_no'         => $request->wr_no,
-            'wr_item'         => $request->wr_item
+            'wr_item'         => $request->wr_item,
+            'qty_req'         => $request->qty_req
         ]);
 
         //redirect to index
@@ -111,5 +114,10 @@ class WrController extends Controller
 
         // Redirect to the dashboard route
         return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function export()
+    {
+        return Excel::download(new WrExport, 'wr.xlsx');
     }
 }

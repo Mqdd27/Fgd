@@ -9,6 +9,7 @@ class wr extends Model
 {
     use HasFactory;
 
+    protected $table = 'wr';
     protected $fillable = [
         'dstrc_ori',
         'creation_date',
@@ -21,6 +22,7 @@ class wr extends Model
         'plant_process',
         'plant_activity',
         'wr_no',
-        'wr_item'
+        'wr_item',
+        'qty_req'
     ];
 }
