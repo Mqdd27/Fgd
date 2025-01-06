@@ -46,6 +46,24 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">AUTHSD_DATE</label>
+                                            <input type="date"
+                                                class="form-control @error('authsd_date') is-invalid @enderror"
+                                                name="authsd_date" value="{{ old('authsd_date') }}">
+
+                                            <!-- error message untuk title -->
+                                            @error('authsd_date')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group mb-3">
                                     <label class="font-weight-bold mb-3">WO_Desc</label>
                                     <input type="text" class="form-control @error('wo_desc') is-invalid @enderror"
@@ -158,6 +176,21 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold mb-3">Plant Activity</label>
+                                    <input type="text"
+                                        class="form-control @error('plant_activity') is-invalid @enderror"
+                                        name="plant_activity" value="{{ old('plant_activity') }}"
+                                        placeholder="Insert Plant Activity">
+
+                                    <!-- error message untuk title -->
+                                    @error('plant_activity')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
@@ -214,8 +247,8 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-md btn-primary me-3">SAVE</button>
-                                <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                                <button type="submit" class="btn btn-md btn-primary me-3">Add</button>
+                                <button type="reset" class="btn btn-md btn-warning">Reset</button>
 
                             </form>
                         </div>
