@@ -25,26 +25,50 @@ class WrController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        //validate form
-        $request->validate([
-            'dstrc_ori'         => 'required',
-            'creation_date'         => 'required',
-            'authsd_date'         => 'required',
-            'wo_desc'         => 'required',
-            'acuan_plan_service'         => 'required',
-            'componen_desc'         => 'required',
-            'egi'         => 'required',
-            'egi_eng'         => 'required',
-            'equip_no'         => 'required',
-            'plant_process'         => 'required',
-            'plant_activity'         => 'required',
-            'wr_no'         => 'required',
-            'wr_item'         => 'required'
-        ]);
+        try {
+            // Validasi form
+            $request->validate([
+                'dstrc_ori'         => 'required',
+                'creation_date'     => 'required',
+                'authsd_date'       => 'required',
+                'wo_desc'           => 'required',
+                'acuan_plan_service' => 'required',
+                'componen_desc'     => 'required',
+                'egi'               => 'required',
+                'egi_eng'           => 'required',
+                'equip_no'          => 'required',
+                'plant_process'     => 'required',
+                'plant_activity'    => 'required',
+                'wr_no'             => 'required',
+                'wr_item'           => 'required'
+            ]);
 
-        // Add a return statement here
-        return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Ditambahkan!']);
+            // Simpan data ke dalam database
+            wr::create([
+                'dstrc_ori'         => $request->dstrc_ori,
+                'creation_date'     => $request->creation_date,
+                'authsd_date'       => $request->authsd_date,
+                'wo_desc'           => $request->wo_desc,
+                'acuan_plan_service' => $request->acuan_plan_service,
+                'componen_desc'     => $request->componen_desc,
+                'egi'               => $request->egi,
+                'egi_eng'           => $request->egi_eng,
+                'equip_no'          => $request->equip_no,
+                'plant_process'     => $request->plant_process,
+                'plant_activity'    => $request->plant_activity,
+                'wr_no'             => $request->wr_no,
+                'wr_item'           => $request->wr_item,
+                'qty_req'           => $request->qty_req
+            ]);
+
+            // Redirect dengan pesan sukses
+            return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Ditambahkan!']);
+        } catch (\Exception $e) {
+            // Tampilkan error message
+            dd($e->getMessage());
+        }
     }
+
     public function show(string $id): View
     {
         //get product by ID
