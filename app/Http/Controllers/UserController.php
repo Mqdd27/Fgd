@@ -35,4 +35,16 @@ class UserController extends Controller
 
         return redirect()->route('users.create')->with('success', 'User berhasil ditambahkan.');
     }
+
+    // Menampilkan detail data user berdasarkan ID
+    public function show($id)
+    {
+        // Cari user berdasarkan ID
+        $user = User::findOrFail($id); // Akan melempar error 404 jika user tidak ditemukan
+
+        // Tampilkan view dengan data user
+        // return view('users.profile', compact('data', 'profileImage'));
+        return view('profile', compact('user'));
+
+    }
 }
