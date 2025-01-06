@@ -10,13 +10,12 @@
         <div class="card-body">
             <a href="{{ route('wr.create') }}" class="btn btn-md btn-success mb-3">Add</a>
             <br>
-            <tr>
-                <th colspan="3">
-                    List Of Users
-                    <a class="btn btn-warning float-end mb-2" href="{{ route('wr.export') }}"><i class="fa fa-download"></i>
-                        Export User Data</a>
-                </th>
-            </tr>
+
+            <div class="d-flex flex-row-reverse">
+                <a class="btn btn-warning mb-2" href="{{ route('wr.export') }}"><i class="fa fa-download"></i>
+                    Export User Data</a>
+            </div>
+
             <br>
             <div style="overflow-x: auto;">
                 <table class="table table-bordered">
@@ -60,13 +59,12 @@
                                 <td>{{ $wr->qty_req }}</td>
                                 <td class="d-flex justify-content-center">
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                        action="{{ route('barangs.destroy', $wr->id) }}" method="POST">
-                                        <a href="{{ route('barangs.show', $wr->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                        <a href="{{ route('barangs.edit', $wr->id) }}"
-                                            class="btn btn-sm btn-primary">EDIT</a>
+                                        action="{{ route('wr.destroy', $wr->id) }}" method="POST" class="d-flex gap-2">
+                                        <a href="{{ route('wr.show', $wr->id) }}" class="btn btn-sm btn-dark">Show</a>
+                                        <a href="{{ route('wr.edit', $wr->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>
