@@ -30,6 +30,7 @@ class WrController extends Controller
             'dstrc_ori'         => 'required',
             'creation_date'         => 'required',
             'authsd_date'         => 'required',
+            'wo_desc'         => 'required',
             'acuan_plan_service'         => 'required',
             'componen_desc'         => 'required',
             'egi'         => 'required',
@@ -69,6 +70,7 @@ class WrController extends Controller
             'dstrc_ori'         => 'required',
             'creation_date'         => 'required',
             'authsd_date'         => 'required',
+            'wo_desc'         => 'required',
             'acuan_plan_service'         => 'required',
             'componen_desc'         => 'required',
             'egi'         => 'required',
@@ -88,6 +90,7 @@ class WrController extends Controller
             'dstrc_ori'         => $request->dstrc_ori,
             'creation_date'         => $request->creation_date,
             'authsd_date'         => $request->authsd_date,
+            'wo_desc'         => $request->wo_desc,
             'acuan_plan_service'         => $request->acuan_plan_service,
             'componen_desc'         => $request->componen_desc,
             'egi'         => $request->egi,
@@ -118,6 +121,6 @@ class WrController extends Controller
 
     public function export()
     {
-        return Excel::download(new WrExport, 'wr.xlsx');
+        return Excel::download(new WrExport, 'Data WR.xlsx');
     }
 }

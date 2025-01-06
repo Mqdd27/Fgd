@@ -40,6 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
-// Route::get('/test', function () {
-//     return view('edit');
-// });
+Route::get('/test', function () {
+    return view('test');
+});

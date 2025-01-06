@@ -14,6 +14,7 @@ class wr extends Model
         'dstrc_ori',
         'creation_date',
         'authsd_date',
+        'wo_desc',
         'acuan_plan_service',
         'componen_desc',
         'egi',
