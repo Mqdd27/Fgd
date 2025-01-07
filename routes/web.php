@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     // Users Management with AdminMiddleware
     Route::middleware([AdminMiddleware::class])->group(function () {
         Route::resource('users', UserController::class); // Mengelola semua operasi User
+        Route::get('userlist', [UserController::class, 'list'])->name('users.list');
     });
 
     // // role and permission management

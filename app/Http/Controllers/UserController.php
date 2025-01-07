@@ -45,6 +45,11 @@ class UserController extends Controller
         // Tampilkan view dengan data user
         // return view('users.profile', compact('data', 'profileImage'));
         return view('profile', compact('user'));
+    }
 
+    public function list()
+    {
+        $users = User::all();
+        return view('userlist', compact('users'));
     }
 }
