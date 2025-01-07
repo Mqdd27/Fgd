@@ -5,8 +5,13 @@
 @section('title', 'Admin Dashboard')
 
 @section('content')
-    <div class="container mt-4">
-        <h1>Welcome {{ Auth::user()->name }}!!</h1>
+<div class="row">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+           <div class="header-title">
+                <h1>Welcome {{ Auth::user()->name }}!!</h1>
+            </div>
+        </div>
         <div class="card-body">
             <a href="{{ route('wr.create') }}" class="btn btn-md btn-success mb-3">Add</a>
             <br>
@@ -17,9 +22,9 @@
             </div>
 
             <br>
-            <div style="overflow-x: auto;">
-                <table class="table table-bordered">
-                    <thead class="table-light">
+            <div class="table-responsive">
+                <table id="datatable" class="table table-striped" data-toggle="data-table">
+                     <thead class="table-light">
                         <tr>
                             <th style="white-space: nowrap;">No</th>
                             <th style="white-space: nowrap;">DSTRC_ORI</th>
@@ -106,9 +111,5 @@
                     });
                 @endif
             </script>
-
-            <div class="card-footer">
-                <div><a href="/logout" class="btn btn-sm btn-secondary">Logout >></a></div>
-            </div>
         </div>
     @endsection

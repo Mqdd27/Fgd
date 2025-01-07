@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Logout Route
-    Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
+    Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
 // Test Route
