@@ -36,11 +36,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class); // Mengelola semua operasi User
     });
 
-    // Role and Permission Management
-    Route::middleware([AdminMiddleware::class])->group(function () {
-        Route::get('/role/permissions', [RolePermissionController::class, 'index'])->name('role.permission.list');
-        Route::post('/role/permissions', [RolePermissionController::class, 'store'])->name('role.permission.store');
-    });
+    // // role and permission management
+    // route::middleware([adminmiddleware::class])->group(function () {
+    //     route::get('/role/permissions', [rolepermissioncontroller::class, 'index'])->name('role.permission.list');
+    //     route::post('/role/permissions', [rolepermissioncontroller::class, 'store'])->name('role.permission.store');
+    // });
 
     // Logout Route
     Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
