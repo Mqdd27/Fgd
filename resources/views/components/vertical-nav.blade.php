@@ -26,8 +26,8 @@
     </li>
     <li class="nav-item static-item">
         <a class="nav-link static-item disabled" href="#" tabindex="-1">
-            <span class="default-icon">Pages</span>
-            <span class="mini-icon">-</span>
+            <span class="default-icon">Pages</spatestn>
+                <span class="mini-icon">-</span>
         </a>
     </li>
 
@@ -84,7 +84,7 @@
 
         <ul class="sub-nav collapse" id="sidebar-user" data-bs-parent="#sidebar">
             <li class="nav-item">
-                <a class="nav-link {{ activeRoute(route('users.create', 1)) }}" href="{{ route('users.create', 1) }}">
+                <a class="nav-link {{ activeRoute(route('users.create')) }}" href="{{ route('users.create') }}">
                     <i class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                             <g>
@@ -92,12 +92,11 @@
                             </g>
                         </svg>
                     </i>
-                    {{-- <i class="sidenav-mini-icon"> U </i> --}}
+                    <i class="sidenav-mini-icon"> U </i>
                     <span class="item-name">Create User</span>
                 </a>
             </li>
         </ul>
-
 
         <ul class="sub-nav collapse" id="sidebar-user" data-bs-parent="#sidebar">
             <li class="nav-item">
