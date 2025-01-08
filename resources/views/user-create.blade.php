@@ -7,9 +7,6 @@
 
     <div class="container mt-4">
 
-        @if (session('success'))
-            <div style="color: green;">{{ session('success') }}</div>
-        @endif
         <div class="card">
             <div class="card-body">
                 <form action="{{ route('users.store') }}" method="POST">
