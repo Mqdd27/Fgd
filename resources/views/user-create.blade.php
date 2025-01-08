@@ -49,6 +49,7 @@
                     <div>
                         <label for="role" class="form-control-label">Role:</label>
                         <select id="role" class="form-control mb-3" name="role" required>
+                            <option value="" disabled hidden selected>--- Select Role ---</option>
                             <option value="sm">Admin</option>
                             <option value="user">User</option>
                             <option value="supplier">Supplier</option>

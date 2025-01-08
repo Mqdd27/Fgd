@@ -22,7 +22,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
-            'role' => 'required|in:admin,user,supplier',
+            'role' => 'required|in:sm,user,supplier',
         ]);
 
         // Simpan data user baru
