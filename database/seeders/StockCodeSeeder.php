@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\wr;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -206,5 +207,8 @@ class StockCodeSeeder extends Seeder
                 'uoi' => 'EACH'
             ]
         ];
+        foreach ($stockdata as $key => $val) {
+            wr::create($val);
+        }
     }
 }
