@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\wr;
-use App\Models\Stock;
 use App\Exports\WrExport;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,7 +19,7 @@ class WrController extends Controller
 
     public function create()
     {
-        $wr = Wr::all(); // Assuming Stock is your model for stock codes
+        $wr = Wr::all();
         return view('create', compact('wr'));
     }
 
@@ -40,7 +39,17 @@ class WrController extends Controller
             'plant_activity' => 'required',
             'wr_no' => 'required',
             'wr_item' => 'required',
-            'stock_code' => 'required', // Validasi stock_id
+            'qty_req' => 'required',
+            'stock_code' => 'required',
+            'price_code' => 'required',
+            'item_name' => 'required',
+            'class' => 'required',
+            'current_class' => 'required',
+            'mnemonic_current' => 'required',
+            'pn_current' => 'required',
+            'pn_global' => 'required',
+            'wh' => 'required',
+            'uoi' => 'required'
         ]);
 
         // Wr::create($request->all());
@@ -57,8 +66,7 @@ class WrController extends Controller
     public function edit(string $id): View
     {
         $wr = Wr::findOrFail($id);
-        $stocks = Stock::all(); // Mengambil data stock untuk edit
-        return view('edit', compact('wr', 'stocks'));
+        return view('edit', compact('wr'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -77,7 +85,18 @@ class WrController extends Controller
             'plant_activity' => 'required',
             'wr_no' => 'required',
             'wr_item' => 'required',
-            'stock_code' => 'required', // Validasi stock_id
+            'qty_req' => 'required',
+            'stock_code' => 'required',
+            'price_code' => 'required',
+            'item_name' => 'required',
+            'class' => 'required',
+            'current_class' => 'required',
+            'mnemonic_current' => 'required',
+            'pn_current' => 'required',
+            'pn_global' => 'required',
+            'wh' => 'required',
+            'uoi' => 'required'
+            // 'notes' => 'required',
         ]);
 
         $wr = Wr::findOrFail($id);
