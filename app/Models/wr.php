@@ -25,12 +25,17 @@ class wr extends Model
         'wr_no',
         'wr_item',
         'qty_req',
-        'stock_code',  // Menambahkan kolom stock_id
+        'stock_code',
+        'price_code',
+        'item_name',
+        'class',
+        'current_class',
+        'mnemonic_current',
+        'pn_current',
+        'pn_global',
+        'wh',
+        'uoi',
+        'notes',
+        'status'
     ];
-
-    // Relasi dengan Stock
-    public function stock()
-    {
-        return $this->belongsTo(Stock::class);
-    }
 }
