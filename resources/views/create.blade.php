@@ -247,6 +247,23 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold mb-3">Stock Code</label>
+                                    <select class="form-select @error('stock_id') is-invalid @enderror" name="stock_id">
+                                        <option value="" disabled selected hidden>--- Select Stock Code ---</option>
+                                        @foreach($stocks as $stock)
+                                            <option value="{{ $stock->id }}" {{ old('stock_id') == $stock->id ? 'selected' : '' }}>
+                                                {{ $stock->stock_code }} - {{ $stock->description }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('stock_id')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                                 <button type="submit" class="btn btn-md btn-primary me-3">Add</button>
                                 <button type="reset" class="btn btn-md btn-warning">Reset</button>
 
