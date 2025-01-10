@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\wr;
 use App\Models\Stock;
+use App\Exports\WrExport;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -17,10 +18,10 @@ class WrController extends Controller
         return view('adminDashboard', compact('wr'));
     }
 
-    public function create(): View
+    public function create()
     {
-        $stocks = Stock::all(); // Mengambil semua data stock
-        return view('create', compact('stocks'));
+        $wr = Wr::all(); // Assuming Stock is your model for stock codes
+        return view('create', compact('wr'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -39,15 +40,14 @@ class WrController extends Controller
             'plant_activity' => 'required',
             'wr_no' => 'required',
             'wr_item' => 'required',
-            'stock_id' => 'required|exists:stocks,id', // Validasi stock_id
+            'stock_code' => 'required', // Validasi stock_id
         ]);
-    
-        // Menambahkan stock_id ke dalam data yang disimpan
-        Wr::create($request->all());
-    
+
+        // Wr::create($request->all());
+
         return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Ditambahkan!']);
     }
-    
+
     public function show(string $id): View
     {
         $wr = Wr::findOrFail($id);
@@ -77,15 +77,15 @@ class WrController extends Controller
             'plant_activity' => 'required',
             'wr_no' => 'required',
             'wr_item' => 'required',
-            'stock_id' => 'required|exists:stocks,id', // Validasi stock_id
+            'stock_code' => 'required', // Validasi stock_id
         ]);
-    
+
         $wr = Wr::findOrFail($id);
         $wr->update($request->all());
-    
+
         return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Diubah!']);
     }
-    
+
     public function destroy($id): RedirectResponse
     {
         $wr = Wr::findOrFail($id);

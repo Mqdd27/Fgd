@@ -11,14 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Membuat tabel stocks
-        Schema::create('stocks', function (Blueprint $table) {
-            $table->id(); // Kolom id sebagai primary key
-            $table->string('stock_code')->unique(); // Kode stock, bisa disesuaikan
-            $table->string('item_name'); // Nama item
-            $table->timestamps(); // Kolom created_at dan updated_at
-        });
-
         // Membuat tabel wr
         Schema::create('wr', function (Blueprint $table) {
             $table->id();

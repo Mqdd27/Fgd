@@ -249,19 +249,209 @@
 
                                 <div class="form-group mb-3">
                                     <label class="font-weight-bold mb-3">Stock Code</label>
-                                    <select class="form-select @error('stock_id') is-invalid @enderror" name="stock_id">
+                                    <select class="form-select @error('stock_code') is-invalid @enderror"
+                                        name="stock_code">
                                         <option value="" disabled selected hidden>--- Select Stock Code ---</option>
-                                        @foreach($stocks as $stock)
-                                            <option value="{{ $stock->id }}" {{ old('stock_id') == $stock->id ? 'selected' : '' }}>
-                                                {{ $stock->stock_code }} - {{ $stock->description }}
+                                        @foreach ($wr as $wr)
+                                            <option value="{{ $wr->id }}"
+                                                {{ old('stock_code') == $wr->id ? 'selected' : '' }}>
+                                                {{ $wr->stock_code }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('stock_id')
+                                    @error('stock_code')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
                                         </div>
                                     @enderror
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">Price_Code</label>
+                                            <input type="text" style="text-transform:uppercase"
+                                                class="form-control @error('price_code') is-invalid @enderror"
+                                                name="price_code" value="{{ old('price_code') }}"
+                                                placeholder="Insert Price Code">
+                                            <!-- error message untuk title -->
+                                            @error('price_code')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold mb-3">ITEM_NAME</label>
+                                    <input type="text" style="text-transform:uppercase"
+                                        class="form-control @error('item_name') is-invalid @enderror" name="item_name"
+                                        value="{{ old('item_name') }}" placeholder="Insert Item Name">
+                                    <!-- error message untuk title -->
+                                    @error('price_code')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">Class</label>
+                                            <input type="text" style="text-transform:uppercase"
+                                                class="form-control @error('class') is-invalid @enderror" name="class"
+                                                value="{{ old('class') }}" placeholder="Insert Class">
+                                            <!-- error message untuk title -->
+                                            @error('class')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">Current Class</label>
+                                            <input type="text" style="text-transform:uppercase"
+                                                class="form-control @error('current_class') is-invalid @enderror"
+                                                name="current_class" value="{{ old('current_class') }}"
+                                                placeholder="Insert Current Class">
+                                            <!-- error message untuk title -->
+                                            @error('current_class')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">Mnemonic Current</label>
+                                            <input type="text" style="text-transform:uppercase"
+                                                class="form-control @error('mnemonic_current') is-invalid @enderror"
+                                                name="mnemonic_current" value="{{ old('mnemonic_current') }}"
+                                                placeholder="Insert Mnemonic Current">
+                                            <!-- error message untuk title -->
+                                            @error('mnemonic_current')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold mb-3">PN Current</label>
+                                    <input type="text" style="text-transform:uppercase"
+                                        class="form-control @error('pn_current') is-invalid @enderror" name="pn_current"
+                                        value="{{ old('pn_current') }}" placeholder="Insert PN Current">
+                                    <!-- error message untuk title -->
+                                    @error('pn_current')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold mb-3">PN Global</label>
+                                    <input type="text" style="text-transform:uppercase"
+                                        class="form-control @error('pn_global') is-invalid @enderror" name="pn_global"
+                                        value="{{ old('pn_global') }}" placeholder="Insert PN Global">
+                                    <!-- error message untuk title -->
+                                    @error('pn_global')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">WH</label>
+                                            <select class="form-select @error('wh') is-invalid @enderror"
+                                                aria-label="Default select example" name="wh"
+                                                value="{{ old('wh') }}">
+                                                <option value="" disabled selected hidden>--- Insert WH ---</option>
+                                                <option value="OTS1">OTS1</option>
+                                                <option value="OTS2">OTS2</option>
+                                                <option value="SPUT">SPUT</option>
+                                                <option value="PSVH">PSVH</option>
+                                                <option value="UTVH">UTVH</option>
+                                            </select>
+                                            <!-- error message untuk title -->
+                                            @error('wh')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">UOI</label>
+                                            <input type="text" style="text-transform:uppercase"
+                                                class="form-control @error('uoi') is-invalid @enderror" name="uoi"
+                                                value="{{ old('uoi') }}" placeholder="Insert UOI">
+                                            <!-- error message untuk title -->
+                                            @error('uoi')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold mb-3">Notes</label>
+                                    <input type="text" style="text-transform:uppercase"
+                                        class="form-control @error('notes') is-invalid @enderror" name="notes"
+                                        value="{{ old('notes') }}" placeholder="Insert Notes">
+                                    <!-- error message untuk title -->
+                                    @error('notes')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="font-weight-bold mb-3">Status</label>
+                                            <select class="form-select @error('status') is-invalid @enderror"
+                                                aria-label="Default select example" name="status"
+                                                value="{{ old('status') }}">
+                                                <option value="" disabled selected hidden>--- Insert Status ---
+                                                </option>
+                                                <option value="complete">Complete</option>
+                                                <option value="continue">Continue</option>
+                                            </select>
+                                            <!-- error message untuk title -->
+                                            @error('status')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-md btn-primary me-3">Add</button>

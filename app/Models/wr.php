@@ -25,7 +25,7 @@ class wr extends Model
         'wr_no',
         'wr_item',
         'qty_req',
-        'stock_id',  // Menambahkan kolom stock_id
+        'stock_code',  // Menambahkan kolom stock_id
     ];
 
     // Relasi dengan Stock

@@ -63,7 +63,7 @@
                                     <td>{{ $wr->wr_no }}</td>
                                     <td>{{ $wr->wr_item }}</td>
                                     <td>{{ $wr->qty_req }}</td>
-                                    <td>{{ $wr->stock_id }}</td>
+                                    <td>{{ $wr->stock_code }}</td>
                                     <td class="d-flex justify-content-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                             action="{{ route('wr.destroy', $wr->id) }}" method="POST"
