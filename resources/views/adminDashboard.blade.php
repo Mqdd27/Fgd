@@ -41,6 +41,7 @@
                                 <th style="white-space: nowrap;">WR_NO</th>
                                 <th style="white-space: nowrap;">WR_ITEM</th>
                                 <th style="white-space: nowrap;">QTY_REQ</th>
+                                <th style="white-space: nowrap;">Stock_Code</th>
                                 <th style="white-space: nowrap;">Action</th>
                             </tr>
                         </thead>
@@ -62,6 +63,7 @@
                                     <td>{{ $wr->wr_no }}</td>
                                     <td>{{ $wr->wr_item }}</td>
                                     <td>{{ $wr->qty_req }}</td>
+                                    <td>{{ $wr->stock_id }}</td>
                                     <td class="d-flex justify-content-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                             action="{{ route('wr.destroy', $wr->id) }}" method="POST"

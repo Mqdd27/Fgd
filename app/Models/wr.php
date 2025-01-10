@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class wr extends Model
 {
     use HasFactory;
-
     protected $table = 'wr';
+
     protected $fillable = [
         'dstrc_ori',
         'creation_date',
@@ -24,6 +24,13 @@ class wr extends Model
         'plant_activity',
         'wr_no',
         'wr_item',
-        'qty_req'
+        'qty_req',
+        'stock_id',  // Menambahkan kolom stock_id
     ];
+
+    // Relasi dengan Stock
+    public function stock()
+    {
+        return $this->belongsTo(Stock::class);
+    }
 }
