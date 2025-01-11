@@ -49,10 +49,11 @@ class WrController extends Controller
             'pn_current' => 'required',
             'pn_global' => 'required',
             'wh' => 'required',
-            'uoi' => 'required'
+            'uoi' => 'required',
+            'status' => 'required'
         ]);
 
-        // Wr::create($request->all());
+        Wr::create($request->all());
 
         return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Ditambahkan!']);
     }
@@ -95,7 +96,8 @@ class WrController extends Controller
             'pn_current' => 'required',
             'pn_global' => 'required',
             'wh' => 'required',
-            'uoi' => 'required'
+            'uoi' => 'required',
+            'status' => 'required'
             // 'notes' => 'required',
         ]);
 
