@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Membuat tabel wr
+
         Schema::create('wr', function (Blueprint $table) {
             $table->id();
             $table->string('dstrc_ori');
@@ -26,17 +26,21 @@ return new class extends Migration
             $table->string('plant_process');
             $table->string('plant_activity');
             $table->string('wr_no');
-            $table->integer('wr_item');
+            $table->string('wr_item');
+            $table->integer('qty_req');
+            $table->string('stock_code');
+            $table->string('price_code');
+            $table->string('item_name');
+            $table->string('class');
+            $table->string('current_class');
+            $table->string('mnemonic_current');
+            $table->string('pn_current');
+            $table->string('pn_global');
+            $table->string('wh');
+            $table->string('uoi');
+            $table->string('notes');
+            $table->string('status');
             $table->timestamps();
-
-            // Menambahkan kolom stock_id sebagai foreign key
-            $table->unsignedBigInteger('stock_id')->nullable(); // kolom untuk merujuk ke stock
-
-            // Menambahkan constraint foreign key
-            $table->foreign('stock_id')
-                ->references('id')
-                ->on('stocks')
-                ->onDelete('set null'); // Jika stok dihapus, set stock_id menjadi null
         });
     }
 
@@ -45,10 +49,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Menghapus tabel wr
-        Schema::dropIfExists('wr');
-
-        // Menghapus tabel stocks
-        Schema::dropIfExists('stocks');
+        //
     }
 };
