@@ -2,15 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\wr;
+use App\Models\StockCode;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class StockCodeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $stockdata = [
@@ -63,78 +60,6 @@ class StockCodeSeeder extends Seeder
                 'uoi' => 'LITR'
             ],
             [
-                'stock_code' => '000005009',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, GEAR',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'SAE30 MEDITRAN',
-                'pn_global' => 'SAE30 MEDITRAN',
-                'wh' => 'OTS1',
-                'uoi' => 'LITR'
-            ],
-            [
-                'stock_code' => '000005009',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, GEAR',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'SAE30 MEDITRAN',
-                'pn_global' => 'SAE30 MEDITRAN',
-                'wh' => 'OTS1',
-                'uoi' => 'LITR'
-            ],
-            [
-                'stock_code' => '000269548',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, HYDRAULIC',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'TURALIK-XT46',
-                'pn_global' => 'TURALIK-XT46',
-                'wh' => 'OTS2',
-                'uoi' => 'LITR'
-            ],
-            [
-                'stock_code' => '000005009',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, GEAR',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'SAE30 MEDITRAN',
-                'pn_global' => 'SAE30 MEDITRAN',
-                'wh' => 'OTS2',
-                'uoi' => 'LITR'
-            ],
-            [
-                'stock_code' => '000269548',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, HYDRAULIC',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'TURALIK-XT46',
-                'pn_global' => 'TURALIK-XT46',
-                'wh' => 'OTS2',
-                'uoi' => 'LITR'
-            ],
-            [
-                'stock_code' => '000005009',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, GEAR',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'SAE30 MEDITRAN',
-                'pn_global' => 'SAE30 MEDITRAN',
-                'wh' => 'OTS1',
-                'uoi' => 'LITR'
-            ],
-            [
                 'stock_code' => '000030635',
                 'price_code' => 'FP',
                 'item_name' => 'O RING',
@@ -157,18 +82,6 @@ class StockCodeSeeder extends Seeder
                 'pn_global' => '723-46-41950',
                 'wh' => 'UTVH',
                 'uoi' => 'EACH'
-            ],
-            [
-                'stock_code' => '000005009',
-                'price_code' => 'FP',
-                'item_name' => 'LUBRICATING OIL, GEAR',
-                'class' => 'I',
-                'current_class' => 'I',
-                'mnemonic_current' => 'PERTAMIN',
-                'pn_current' => 'SAE30 MEDITRAN',
-                'pn_global' => 'SAE30 MEDITRAN',
-                'wh' => 'OTS1',
-                'uoi' => 'LITR'
             ],
             [
                 'stock_code' => '000477547',
@@ -207,8 +120,9 @@ class StockCodeSeeder extends Seeder
                 'uoi' => 'EACH'
             ]
         ];
+
         foreach ($stockdata as $key => $val) {
-            wr::create($val);
+            StockCode::create($val);
         }
     }
 }

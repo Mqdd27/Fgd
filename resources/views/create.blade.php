@@ -251,14 +251,13 @@
                                     <label class="font-weight-bold mb-3">Stock Code</label>
                                     <select class="form-select @error('stock_code') is-invalid @enderror"
                                         name="stock_code">
-                                        {{-- <option value="" disabled selected hidden>--- Select Stock Code ---</option>
-                                        @foreach ($wr as $wr)
-                                            <option value="{{ $wr->id }}"
-                                                {{ old('stock_code') == $wr->id ? 'selected' : 'Testing' }}>
-                                                {{ $wr->stock_code }}
+                                        <option value="" disabled selected hidden>--- Select Stock Code ---</option>
+                                        @foreach ($stockCode as $stock)
+                                            <option value="{{ $stock->stock_code }}"
+                                                {{ old('stock_code') == $stock->stock_code ? 'selected' : '' }}>
+                                                {{ $stock->stock_code }}
                                             </option>
-                                        @endforeach --}}
-                                        <option value="testing">test</option>
+                                        @endforeach
                                     </select>
                                     @error('stock_code')
                                         <div class="alert alert-danger mt-2">
@@ -266,7 +265,6 @@
                                         </div>
                                     @enderror
                                 </div>
-
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -468,4 +466,35 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#stock_code').change(function() {
+                var stockCode = $(this).val(); // Ambil nilai stock_code
+
+                if (stockCode) {
+                    $.ajax({
+                        url: '/get-stock/' + stockCode, // Panggil endpoint
+                        method: 'GET',
+                        success: function(data) {
+                            // Isi otomatis kolom lain berdasarkan response
+                            $('input[name="price_code"]').val(data.price_code);
+                            $('input[name="item_name"]').val(data.item_name);
+                            $('input[name="class"]').val(data.class);
+                            $('input[name="current_class"]').val(data.current_class);
+                            $('input[name="mnemonic_current"]').val(data.mnemonic_current);
+                            $('input[name="pn_current"]').val(data.pn_current);
+                            $('input[name="pn_global"]').val(data.pn_global);
+                            $('input[name="uoi"]').val(data.uoi);
+                        },
+                        error: function() {
+                            alert('Stock Code not found');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
 @endsection
