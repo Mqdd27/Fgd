@@ -255,7 +255,7 @@
                                         @foreach ($stockCode as $stock)
                                             <option value="{{ $stock->stock_code }}"
                                                 {{ old('stock_code') == $stock->stock_code ? 'selected' : '' }}>
-                                                {{ $stock->stock_code }}
+                                                {{ $stock->stock_code }} - {{ $stock->item_name }}
                                             </option>
                                         @endforeach
                                     </select>
