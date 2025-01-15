@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StockCodeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SesiController;
 use App\Http\Middleware\AdminMiddleware;
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('userlist', [UserController::class, 'list'])->name('users.list');
     });
 
+    Route::get('/get-stock/{stock_code}', [StockCodeController::class, 'getStockData']);
     // // role and permission management
     // route::middleware([adminmiddleware::class])->group(function () {
     //     route::get('/role/permissions', [rolepermissioncontroller::class, 'index'])->name('role.permission.list');

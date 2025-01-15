@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\wr;
+use App\Models\StockCode;
 use App\Exports\WrExport;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,13 +15,16 @@ class WrController extends Controller
     public function index(): View
     {
         $wr = Wr::latest()->paginate(10);
+        // $stockCode = StockCode::all();
         return view('adminDashboard', compact('wr'));
     }
 
     public function create()
     {
-        $wr = Wr::all();
-        return view('create', compact('wr'));
+        // $wr = Wr::all();
+        $stockCode = StockCode::all();
+        return view('create', compact('stockCode'));
+        // return view('create', compact('wr'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -67,7 +71,8 @@ class WrController extends Controller
     public function edit(string $id): View
     {
         $wr = Wr::findOrFail($id);
-        return view('edit', compact('wr'));
+        $stockCode = StockCode::all();
+        return view('edit', compact('wr', 'stockCode'));
     }
 
     public function update(Request $request, $id): RedirectResponse
