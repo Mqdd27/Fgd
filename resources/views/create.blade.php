@@ -251,13 +251,14 @@
                                     <label class="font-weight-bold mb-3">Stock Code</label>
                                     <select class="form-select @error('stock_code') is-invalid @enderror"
                                         name="stock_code">
-                                        <option value="" disabled selected hidden>--- Select Stock Code ---</option>
+                                        {{-- <option value="" disabled selected hidden>--- Select Stock Code ---</option>
                                         @foreach ($wr as $wr)
                                             <option value="{{ $wr->id }}"
-                                                {{ old('stock_code') == $wr->id ? 'selected' : '' }}>
+                                                {{ old('stock_code') == $wr->id ? 'selected' : 'Testing' }}>
                                                 {{ $wr->stock_code }}
                                             </option>
-                                        @endforeach
+                                        @endforeach --}}
+                                        <option value="testing">test</option>
                                     </select>
                                     @error('stock_code')
                                         <div class="alert alert-danger mt-2">

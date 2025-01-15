@@ -42,6 +42,16 @@
                                 <th style="white-space: nowrap;">WR_ITEM</th>
                                 <th style="white-space: nowrap;">QTY_REQ</th>
                                 <th style="white-space: nowrap;">Stock_Code</th>
+                                <th style="white-space: nowrap;">Price_Code</th>
+                                <th style="white-space: nowrap;">ITEM_NAME</th>
+                                <th style="white-space: nowrap;">CLASS</th>
+                                <th style="white-space: nowrap;">Current Class</th>
+                                <th style="white-space: nowrap;">Mnemonic Current</th>
+                                <th style="white-space: nowrap;">PN Current</th>
+                                <th style="white-space: nowrap;">PN Global</th>
+                                <th style="white-space: nowrap;">WH</th>
+                                <th style="white-space: nowrap;">UOI</th>
+                                <th style="white-space: nowrap;">Notes</th>
                                 <th style="white-space: nowrap;">Action</th>
                             </tr>
                         </thead>
@@ -64,6 +74,16 @@
                                     <td>{{ $wr->wr_item }}</td>
                                     <td>{{ $wr->qty_req }}</td>
                                     <td>{{ $wr->stock_code }}</td>
+                                    <td>{{ $wr->price_code }}</td>
+                                    <td>{{ $wr->item_name }}</td>
+                                    <td>{{ $wr->class }}</td>
+                                    <td>{{ $wr->current_class }}</td>
+                                    <td>{{ $wr->mnemonic_current }}</td>
+                                    <td>{{ $wr->pn_current }}</td>
+                                    <td>{{ $wr->pn_global }}</td>
+                                    <td>{{ $wr->wh }}</td>
+                                    <td>{{ $wr->uoi }}</td>
+                                    <td>{{ $wr->notes }}</td>
                                     <td class="d-flex justify-content-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                             action="{{ route('wr.destroy', $wr->id) }}" method="POST"
