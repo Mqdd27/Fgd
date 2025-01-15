@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('stockcode', function (Blueprint $table) {
             $table->id(); // ID untuk primary key
-            $table->string('stock_code')->unique(); // Kolom stock_code yang unik
-            $table->string('price_code')->nullable(); // Kolom price_code (opsional)
-            $table->string('item_name'); // Kolom item_name
-            $table->string('class')->nullable(); // Kolom class (opsional)
-            $table->string('current_class')->nullable(); // Kolom current_class (opsional)
-            $table->string('mnemonic_current')->nullable(); // Kolom mnemonic_current (opsional)
-            $table->string('pn_current')->nullable(); // Kolom pn_current (opsional)
-            $table->string('pn_global')->nullable(); // Kolom pn_global (opsional)
-            $table->string('wh')->nullable(); // Kolom wh (opsional)
-            $table->string('uoi')->nullable(); // Kolom uoi (opsional)
-            $table->timestamps(); // Kolom created_at dan updated_at
+            $table->string('stock_code')->unique();
+            $table->string('price_code')->nullable();
+            $table->string('item_name');
+            $table->string('class')->nullable();
+            $table->string('current_class')->nullable();
+            $table->string('mnemonic_current')->nullable();
+            $table->string('pn_current')->nullable();
+            $table->string('pn_global')->nullable();
+            $table->string('wh')->nullable();
+            $table->string('uoi')->nullable();
+            $table->timestamps();
         });
     }
 
