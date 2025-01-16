@@ -3,7 +3,7 @@
 use App\Http\Controllers\StockCodeController;
 // use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SesiController;
-// use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WrController;
 // use App\Http\Controllers\RolePermissionController;
@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Users Management (Admin Only)
-    Route::middleware(['admin'])->group(function () {
+    Route::middleware([AdminMiddleware::class . ':sm'])->group(function () {
         Route::resource('users', UserController::class);
         Route::get('userlist', [UserController::class, 'list'])->name('users.list');
     });
