@@ -77,7 +77,7 @@
                                 </g>
                             </svg>
                         </i>
-                        {{-- <i class="sidenav-mini-icon"> U </i> --}}
+                        <i class="sidenav-mini-icon"> U </i>
                         <span class="item-name">User Profile</span>
                     </a>
                 </li>
@@ -95,7 +95,7 @@
                                 </g>
                             </svg>
                         </i>
-                        <i class="sidenav-mini-icon"> U </i>
+                        <i class="sidenav-mini-icon"> CU </i>
                         <span class="item-name">Create User</span>
                     </a>
                 </li>
@@ -112,7 +112,7 @@
                                 </g>
                             </svg>
                         </i>
-                        {{-- <i class="sidenav-mini-icon"> U </i> --}}
+                        <i class="sidenav-mini-icon"> UL </i>
                         <span class="item-name">User Lists</span>
                     </a>
                 </li>
