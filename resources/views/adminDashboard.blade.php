@@ -84,6 +84,7 @@
                                     <td>{{ $wr->wh }}</td>
                                     <td>{{ $wr->uoi }}</td>
                                     <td>{{ $wr->notes }}</td>
+                                    <td>{{ $wr->status }}</td>
                                     <td class="d-flex justify-content-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                             action="{{ route('wr.destroy', $wr->id) }}" method="POST"
