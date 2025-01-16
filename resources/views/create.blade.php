@@ -390,12 +390,6 @@
                                                     {{ $message }}
                                                 </div>
                                             @enderror
-                                            <!-- error message untuk title -->
-                                            @error('wh')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
