@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\StockCodeController;
-// use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SesiController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\UserController;
@@ -11,7 +10,6 @@ use App\Http\Controllers\WrController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// Guest Routes (Login)
 // Guest Routes (Login)
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index']);
