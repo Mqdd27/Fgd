@@ -390,12 +390,6 @@
                                                     {{ $message }}
                                                 </div>
                                             @enderror
-                                            <!-- error message untuk title -->
-                                            @error('wh')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -419,9 +413,8 @@
 
                                 <div class="form-group mb-3">
                                     <label class="font-weight-bold mb-3">Notes</label>
-                                    <input type="text" style="text-transform:uppercase"
-                                        class="form-control @error('notes') is-invalid @enderror" name="notes"
-                                        value="{{ old('notes') }}" placeholder="Insert Notes">
+                                    <input type="text" class="form-control @error('notes') is-invalid @enderror"
+                                        name="notes" value="{{ old('notes') }}" placeholder="Insert Notes">
                                     <!-- error message untuk title -->
                                     @error('notes')
                                         <div class="alert alert-danger mt-2">
