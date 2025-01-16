@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('pn_global');
             $table->string('wh');
             $table->string('uoi');
-            $table->string('notes');
+            $table->string('notes')->nullable();
             $table->string('status');
             $table->timestamps();
         });
