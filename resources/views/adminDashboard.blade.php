@@ -52,6 +52,7 @@
                                 <th style="white-space: nowrap;">WH</th>
                                 <th style="white-space: nowrap;">UOI</th>
                                 <th style="white-space: nowrap;">Notes</th>
+                                <th style="white-space: nowrap;">Status</th>
                                 <th style="white-space: nowrap;">Action</th>
                             </tr>
                         </thead>
@@ -137,4 +138,7 @@
                     @endif
                 </script>
             </div>
-        @endsection
+        </div>
+    </div>
+
+@endsection

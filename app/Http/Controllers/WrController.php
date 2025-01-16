@@ -9,16 +9,30 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class WrController extends Controller
 {
     public function index(): View
     {
-        $wr = Wr::latest()->paginate(10);
-        // $stockCode = StockCode::all();
-        return view('adminDashboard', compact('wr'));
-    }
+        $role = Auth::user()->role; // Mendapatkan role user yang sedang login
+        $wrQuery = Wr::query();
 
+        // Filter berdasarkan role
+        if ($role === 'supplier') {
+            $wrQuery->where('wh', 'UTVH'); // Hanya data dengan WH = UTVH
+        }
+
+        $wr = $wrQuery->latest()->paginate(10);
+
+        if ($role === 'sm') {
+            return view('adminDashboard', compact('wr'));
+        } elseif ($role === 'supplier') {
+            return view('supplierDashboard', compact('wr'));
+        } else {
+            return view('userDashboard', compact('wr'));
+        }
+    }
     public function create()
     {
         // $wr = Wr::all();
