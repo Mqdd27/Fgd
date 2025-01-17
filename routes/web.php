@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\StockCodeController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SesiController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WrController;
-use App\Http\Controllers\RolePermissionController;
-use App\Http\Middleware\UserAkses;
+// use App\Http\Controllers\RolePermissionController;
+// use App\Http\Middleware\UserAkses;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 // Guest Routes (Login)
 Route::middleware(['guest'])->group(function () {
@@ -18,35 +18,45 @@ Route::middleware(['guest'])->group(function () {
 
 // Authenticated Routes
 Route::middleware(['auth'])->group(function () {
-    // Resource and Export Routes
+    // WR Management
     Route::resource('wr', WrController::class);
     Route::get('wr-export', [WrController::class, 'export'])->name('wr.export');
 
-    // Dashboard Routes
-    Route::get('/dashboard/admin', [WrController::class, 'index'])->name('dashboard');
-    Route::get('/show', [WrController::class, 'index'])->name('show');
+    // Dashboard
+    Route::get('/dashboard', function () {
+        // $role = Auth::check() && Auth::user()->role == 'sm';
+        $role = Auth::check() ? Auth::user()->role : null;
+        if ($role === 'sm') {
+            return redirect()->route('adminDashboard');
+        } elseif ($role === 'supplier') {
+            return redirect()->route('supplierDashboard');
+        } else {
+            return redirect()->route('userDashboard');
+        }
+    })->name('dashboard');
 
-    // Dashboard Management
-    Route::get('/dashboard', [AdminController::class, 'index']);
-    Route::get('/dashboard/admin/sm', [AdminController::class, 'admin'])->middleware([UserAkses::class . ':sm']);
-    Route::get('/dashboard/user', [AdminController::class, 'user'])->middleware([UserAkses::class . ':user']);
-    Route::get('/dashboard/supplier', [AdminController::class, 'supplier'])->middleware([UserAkses::class . ':supplier']);
+    Route::prefix('dashboard')->group(function () {
+        Route::get('admin', [WrController::class, 'index'])->name('adminDashboard');
+        Route::get('supplier', [WrController::class, 'index'])->name('supplierDashboard');
+        Route::get('user', [WrController::class, 'index'])->name('userDashboard');
+    });
 
-    // Users Management with AdminMiddleware
-    Route::middleware([AdminMiddleware::class])->group(function () {
-        Route::resource('users', UserController::class); // Mengelola semua operasi User
-        Route::get('/users/create', [UserController::class, 'create'])->name('users.create'); // Menyelaraskan dengan rute dan controller
+    // Users Management (Admin Only)
+    Route::middleware([AdminMiddleware::class . ':sm'])->group(function () {
+        Route::resource('users', UserController::class);
         Route::get('userlist', [UserController::class, 'list'])->name('users.list');
     });
 
-    Route::get('/get-stock/{stock_code}', [StockCodeController::class, 'getStockData']);
-    // // role and permission management
-    // route::middleware([adminmiddleware::class])->group(function () {
-    //     route::get('/role/permissions', [rolepermissioncontroller::class, 'index'])->name('role.permission.list');
-    //     route::post('/role/permissions', [rolepermissioncontroller::class, 'store'])->name('role.permission.store');
+    // Stock Code
+    Route::get('/get-stock/{stock_code}', [StockCodeController::class, 'getStockData'])->name('stock.get');
+
+    // Role & Permission Management
+    // Route::prefix('role')->middleware(['admin'])->name('roles.')->group(function () {
+    //     Route::get('/permissions', [RolePermissionController::class, 'index'])->name('permissions.index');
+    //     Route::post('/permissions', [RolePermissionController::class, 'store'])->name('permissions.store');
     // });
 
-    // Logout Route
+    // Logout
     Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
