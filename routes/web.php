@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     // Users Management (Admin Only)
     Route::middleware([AdminMiddleware::class . ':sm'])->group(function () {
         Route::resource('users', UserController::class);
-        Route::get('userlist', [UserController::class, 'list'])->name('users.list');
+        // Route::get('userlist', [UserController::class, 'index'])->name('users.list');
     });
 
     // Stock Code

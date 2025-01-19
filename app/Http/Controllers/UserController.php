@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::all();
+        return view('userlist', compact('users'));
+    }
+
     // Menampilkan form tambah user
     public function create()
     {
@@ -47,9 +53,34 @@ class UserController extends Controller
         return view('profile', compact('user'));
     }
 
-    public function list()
+    // public function list()
+    // {
+    //     $users = User::all();
+    //     return view('userlist', compact('users'));
+    // }
+
+    public function edit($id)
     {
-        $users = User::all();
-        return view('userlist', compact('users'));
+        $user = User::findOrFail($id);
+        return view('userEdit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('users.index')->with('success', 'User berhasil diupdate.');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Log sebelum penghapusan
+
+        $user->delete();
+
+        // Log setelah penghapusan
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
     }
 }
