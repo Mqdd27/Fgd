@@ -22,7 +22,7 @@
 
                 <br>
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-striped" data-toggle="data-table">
+                    <table id="datatable" class="table" data-toggle="data-table">
                         <thead class="table-light">
                             <tr>
                                 <th style="white-space: nowrap;">No</th>
