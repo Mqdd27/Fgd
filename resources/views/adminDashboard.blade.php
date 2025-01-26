@@ -135,6 +135,31 @@
                             timer: 2000
                         });
                     @endif
+
+                            // JavaScript for Sidebar Toggle
+        document.addEventListener("DOMContentLoaded", () => {
+            const sidebarToggle = (elem) => {
+                elem.addEventListener("click", (e) => {
+                    e.preventDefault();  // Prevent default action if needed
+
+                    const sidebar = document.querySelector(".sidebar");  // Ensure sidebar element exists
+                    if (sidebar) {
+                        sidebar.classList.toggle("sidebar-mini");  // Toggle the sidebar-mini class
+                        console.log("Sidebar status toggled!");  // Debugging log
+                    } else {
+                        console.error("Sidebar element not found!");
+                    }
+                });
+            };
+
+            // Get all elements with data-toggle="sidebar"
+            const sidebarToggleBtn = document.querySelectorAll('[data-toggle="sidebar"]');
+
+            // Apply sidebarToggle to each button
+            sidebarToggleBtn.forEach((sidebarBtn) => {
+                sidebarToggle(sidebarBtn);
+            });
+        });
                 </script>
             </div>
         </div>

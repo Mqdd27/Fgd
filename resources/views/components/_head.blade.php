@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{asset('css/rtl.css?v=1.1.0')}}">
 <link rel="stylesheet" href="{{asset('css/customizer.css?v=1.1.0')}}">
 
+
 {{-- <!-- Fullcalender CSS -->
 <link rel='stylesheet' href="{{asset('vendor/fullcalendar/core/main.css')}}" />
 <link rel='stylesheet' href="{{asset('vendor/fullcalendar/daygrid/main.css')}}" />
